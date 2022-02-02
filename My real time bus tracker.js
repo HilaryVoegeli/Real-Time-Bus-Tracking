@@ -19,29 +19,30 @@ async function run(){
   const locations = await getBusLocations();
   coordinates.push([(locations[0].attributes.longitude), (locations[0].attributes.latitude)]);
   coordinates1.push([(locations[1].attributes.longitude), (locations[1].attributes.latitude)]);
-	// timer
-	setTimeout(run, 15000);
+  // timer
+  setTimeout(run, 15000);
 }
 
 // Request bus data from MBTA
 async function getBusLocations(){
-	const url = 'https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip';
-	const response = await fetch(url);
-	const json = await response.json();
-	return json.data;
+  const url = 'https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip';
+  const response = await fetch(url);
+  const json = await response.json();
+  return json.data;
 }
+
 run(); 
 
 //make marker
 var marker = new mapboxgl.Marker({
   color:"blue"
-}).setLngLat([-71.092761, 42.357575])
+  }).setLngLat([-71.092761, 42.357575])
   .addTo(map);
 
 //make marker
 var marker1 = new mapboxgl.Marker({
   color:"red"
-}).setLngLat([-71.092761, 42.357575])
+  }).setLngLat([-71.092761, 42.357575])
   .addTo(map);
 
 //move marker
