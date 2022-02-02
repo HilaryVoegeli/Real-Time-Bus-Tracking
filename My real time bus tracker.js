@@ -2,25 +2,23 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiaHZvZWdlbGkiLCJhIjoiY2t6NDRrMGUyMGQ2cTJ1bThtOG9yYzduOCJ9.gD_AaaN6967eGElKRODIQg';
 
 var counter = 0;
+var counter1 = 0;
 var coordinates = [];
 var coordinates1 = [];
 
 //make map
 var  map = new mapboxgl.Map({
   container:'map',
-  style:'mapbox://styles/mapbox/streets-v11',
+  style:'mapbox://styles/mapbox/satellite-streets-v11',
   center:[-71.104081, 42.365554],
-  zoom:14
+  zoom:13
 });
 
+// get bus data  
 async function run(){
-    // get bus data  
-	const locations = await getBusLocations();
+  const locations = await getBusLocations();
   coordinates.push([(locations[0].attributes.longitude), (locations[0].attributes.latitude)]);
   coordinates1.push([(locations[1].attributes.longitude), (locations[1].attributes.latitude)]);
-	//so I can see the data
-  console.log(coordinates);
-  console.log(coordinates1);
 	// timer
 	setTimeout(run, 15000);
 }
@@ -34,17 +32,19 @@ async function getBusLocations(){
 }
 run(); 
 
-//make marker 1
-var marker = new mapboxgl.Marker()
-   .setLngLat([-71.092761, 42.357575])
-   .addTo(map);
-  
-//make marker 2
-var marker1 = new mapboxgl.Marker()
-    .setLngLat([-71.092761, 42.357575])
-    .addTo(map);
+//make marker
+var marker = new mapboxgl.Marker({
+  color:"blue"
+}).setLngLat([-71.092761, 42.357575])
+  .addTo(map);
 
-//move the markers
+//make marker
+var marker1 = new mapboxgl.Marker({
+  color:"red"
+}).setLngLat([-71.092761, 42.357575])
+  .addTo(map);
+
+//move marker
 function move(){
     setTimeout(() =>{
     if(counter > coordinates.length) return;
@@ -54,11 +54,12 @@ function move(){
   }, 15100);
  }
 
+//move marker
  function move1(){
     setTimeout(() =>{
-    if(counter > coordinates1.length) return;
-    marker1.setLngLat(coordinates1[counter]);
-    counter++;
+    if(counter1 > coordinates1.length) return;
+    marker1.setLngLat(coordinates1[counter1]);
+    counter1++;
     move1();
   }, 15100);
  }
