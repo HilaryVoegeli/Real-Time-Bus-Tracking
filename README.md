@@ -1,5 +1,5 @@
-# Real-Time-Bus-Tracker
-## This project uses two markers on a map to track the longitude and latitude of two buses on route 1 in Boston, in real time, using an API. 
+# Real Time Bus Tracker
+## This project uses markers on a map to track the longitude and latitude of two buses on route 1 in Boston, in real time, using an API. 
 
 #### I initially started with tracking one bus and added another marker for a second bus. 
 #### To run this project loacally download the html file, js file, and css file. Save the files in the same folder. You can drag and drop the HTML file into your broswer to view the project. To view in the browser, navigate to the GitHub Page for this project. https://hilaryvoegeli.github.io/Real-Time-Bus-Tracking/. To see the markers move in real-time, click the button of the corresponding bus.
